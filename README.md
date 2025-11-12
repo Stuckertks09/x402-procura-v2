@@ -75,7 +75,7 @@ This project directly targets three categories:
 
 ---
 
-## 🔧 Why a **Custom Facilitator** (Not OpenAI Billing API)
+## 🔧 Why a **Custom Facilitator** (Not a x402 API)
 
 Most x402 demos call out to a hosted facilitator API.
 
@@ -88,7 +88,7 @@ We built **our own**, because:
 | Payments abstracted away   | Payments **visible** + explainable                     |
 | No control over signatures | We validate **Ed25519 signatures** locally             |
 | Black-box settlement       | Optional **REAL** on-chain transfers                   |
-| Hard to extend             | We add per-agent **micropay rules**, logging, auditing |
+| Hard to extend             | We can add per-agent **micropay rules**                |
 
 This demonstrates **true self-custody**, **wallet-aware agent workflows**, and **trust-minimized execution**.
 
@@ -190,7 +190,7 @@ http://localhost:5173
 
 ## 🔑 About the Keys
 
-This demo includes **example agent wallets** (scout, evaluator, negotiator, supplier, orchestrator).
+This demo includes **example agent wallets** (scout, evaluator, negotiator, supplier, orchestrator). (All keys in .env.example)
 
 They are:
 
