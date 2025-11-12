@@ -179,7 +179,7 @@ cd frontend
 npm install
 npm run dev
 ```
-
+Add OpenAPI Key to .env
 Open [`http://localhost:5173`](http://localhost:5173) and submit a procurement request.
 
 ---
