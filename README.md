@@ -372,5 +372,5 @@ MIT License - See [LICENSE](./LICENSE) file for details
 <p align="center">
   <a href="https://storage.googleapis.com/my-ads-creatives/ads/x402Procura.mp4">📹 Watch Demo</a> •
   <a href="https://explorer.solana.com/address/5g5vVtid5C6rVfshSQMHpWy7rvWWXrowVUN78UCKkQEj?cluster=devnet">🔗 View Contract</a> •
-  <a href="https://github.com/[your-username]/x402-procura">💻 View Source</a>
+  <a href="https://github.com/stuckertks09/x402-procura-v2">💻 View Source</a>
 </p>
