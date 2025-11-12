@@ -74,10 +74,10 @@ We're competing in **three categories** because the system spans infrastructure,
 
 **Key timestamps:**
 - `0:15` - User submits procurement request
-- `0:45` - x402 signature authorization (no wallet connect)
-- `1:10` - Live agent negotiation via SSE stream
-- `1:45` - Supplier settlement + on-chain reputation update
-- `2:20` - Explorer view of Anchor program state
+- `0:30` - x402 signature authorization (no wallet connect)
+- `0:45` - Live agent negotiation via SSE stream
+- `1:00` - Supplier settlement + on-chain reputation update
+- `1:05` - Explorer view of Anchor program state
 
 ---
 
