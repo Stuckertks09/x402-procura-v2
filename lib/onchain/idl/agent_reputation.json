@@ -1,0 +1,433 @@
+{
+  "address": "5g5vVtid5C6rVfshSQMHpWy7rvWWXrowVUN78UCKkQEj",
+  "metadata": {
+    "name": "agent_reputation",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "initialize_agent",
+      "docs": [
+        "Original registration (no stake required)"
+      ],
+      "discriminator": [
+        212,
+        81,
+        156,
+        211,
+        212,
+        110,
+        21,
+        28
+      ],
+      "accounts": [
+        {
+          "name": "reputation",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  114,
+                  101,
+                  112,
+                  117,
+                  116,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "agent"
+              }
+            ]
+          }
+        },
+        {
+          "name": "agent",
+          "signer": true
+        },
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "role",
+          "type": {
+            "defined": {
+              "name": "AgentRole"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "initialize_agent_with_stake",
+      "docs": [
+        "NEW: Registration with stake"
+      ],
+      "discriminator": [
+        208,
+        137,
+        227,
+        193,
+        123,
+        196,
+        207,
+        28
+      ],
+      "accounts": [
+        {
+          "name": "reputation",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  114,
+                  101,
+                  112,
+                  117,
+                  116,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "agent"
+              }
+            ]
+          }
+        },
+        {
+          "name": "stake_pda",
+          "docs": [
+            "Stake PDA - just holds lamports as collateral"
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  101
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "agent"
+              }
+            ]
+          }
+        },
+        {
+          "name": "agent",
+          "signer": true
+        },
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "role",
+          "type": {
+            "defined": {
+              "name": "AgentRole"
+            }
+          }
+        },
+        {
+          "name": "stake_amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "slash_stake",
+      "docs": [
+        "NEW: Slash stake for bad behavior"
+      ],
+      "discriminator": [
+        190,
+        242,
+        137,
+        27,
+        41,
+        18,
+        233,
+        37
+      ],
+      "accounts": [
+        {
+          "name": "stake_pda",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  101
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "agent"
+              }
+            ]
+          }
+        },
+        {
+          "name": "agent"
+        },
+        {
+          "name": "authority",
+          "docs": [
+            "Authority who can slash (orchestrator)"
+          ],
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "slash_amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "update_reputation",
+      "docs": [
+        "Update reputation (unchanged)"
+      ],
+      "discriminator": [
+        194,
+        220,
+        43,
+        201,
+        54,
+        209,
+        49,
+        178
+      ],
+      "accounts": [
+        {
+          "name": "reputation",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  114,
+                  101,
+                  112,
+                  117,
+                  116,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "agent"
+              }
+            ]
+          }
+        },
+        {
+          "name": "agent"
+        },
+        {
+          "name": "authority",
+          "docs": [
+            "The orchestrator (authority) updating the reputation"
+          ],
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "success",
+          "type": "bool"
+        },
+        {
+          "name": "amount_earned",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "withdraw_stake",
+      "docs": [
+        "NEW: Withdraw stake (for good agents)"
+      ],
+      "discriminator": [
+        153,
+        8,
+        22,
+        138,
+        105,
+        176,
+        87,
+        66
+      ],
+      "accounts": [
+        {
+          "name": "stake_pda",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  97,
+                  107,
+                  101
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "agent"
+              }
+            ]
+          }
+        },
+        {
+          "name": "agent",
+          "docs": [
+            "Agent withdrawing their stake"
+          ],
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "withdraw_amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "AgentReputation",
+      "discriminator": [
+        245,
+        56,
+        239,
+        246,
+        36,
+        231,
+        227,
+        67
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "AgentReputation",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "agent",
+            "type": "pubkey"
+          },
+          {
+            "name": "role",
+            "type": {
+              "defined": {
+                "name": "AgentRole"
+              }
+            }
+          },
+          {
+            "name": "jobs_completed",
+            "type": "u64"
+          },
+          {
+            "name": "jobs_failed",
+            "type": "u64"
+          },
+          {
+            "name": "total_earned",
+            "type": "u64"
+          },
+          {
+            "name": "trust_score",
+            "type": "u8"
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          },
+          {
+            "name": "last_updated",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AgentRole",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Scout"
+          },
+          {
+            "name": "Evaluator"
+          },
+          {
+            "name": "Negotiator"
+          },
+          {
+            "name": "Supplier"
+          }
+        ]
+      }
+    }
+  ]
+}
